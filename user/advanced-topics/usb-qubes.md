@@ -105,6 +105,8 @@ sys-usb dom0 allow
 You can now use your USB keyboard to log in to your dom0 user account (after
 LUKS decryption).
 
+#### Manual setup option: USB keyboard confirmation prompt
+
 You can set up your system so that there's a confirmation prompt each time the
 USB keyboard is connected. However, this will effectively disable your USB
 keyboard for dom0 user account login and the screen locker, so **don't do this
@@ -115,13 +117,14 @@ sure you wish to proceed, change the previous line to:
 sys-usb dom0 ask,default_target=dom0
 ```
 
+#### Manual setup option: Use USB keyboard to enter LUKS passphrase
+
 If you wish to use a USB keyboard to enter your LUKS passphrase, you cannot
 [hide its USB controller from dom0](#how-to-hide-usb-controllers-from-dom0). If
 you've already hidden that USB controller from dom0, you must revert the
 procedure by removing the `rd.qubes.hide_all_usb` option and employ an
 alternative strategy for protecting your system by physically disconnecting
 other devices during startup.
-
 
 **Qubes 4.1 only:** You should also add the
 `usbcore.authorized_default=0` option, which prevents the initialization of
